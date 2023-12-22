@@ -18,19 +18,6 @@
         />
       </div>
 
-      <!----<div class="ms-auto select">
-        <select class="form-select " aria-label="Default select example" v-model="region">
-
-          <option value="" selected v-show="hide">Filter by Region</option>
-          <option value="africa" class="mt-2">Africa</option>
-          <option value="america" class="mt-2 pt-4">America</option>
-          <option value="asia">Asia</option>
-          <option value="europe">Europe</option>
-          <option value="oceania">Oceania</option>  
-        </select>
-      </div>-->
-      <!------------Test-->
-
       <div class="custom-select" :class="{ open: isOpen }">
         <div class="select-box" @click="toggleDropdown">
           <span>{{ selectedOption }}</span>
