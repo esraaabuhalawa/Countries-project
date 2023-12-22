@@ -29,7 +29,7 @@
           <div
             v-for="option in options"
             :key="option"
-            :style="{ backgroundColor: option === selectedOption ? '#e0e0e0' : 'transparent' }"
+            :style="{ backgroundColor: option === selectedOption ? '#2f4a65' : 'transparent' }"
           >
             {{ option }}
           </div>
