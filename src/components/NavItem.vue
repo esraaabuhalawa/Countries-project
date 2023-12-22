@@ -6,14 +6,14 @@
           <h1>Where in the world ?</h1>
         </section>
         <section class="ms-auto">
-          <div v-show="!showMode" @click="setTheme('dark')" class="align-self-baseline">
+          <div v-show="showMode" @click="setTheme('dark')" class="align-self-baseline">
             <span class="icon">
               <i class="fa-solid fa-moon"></i>
             </span>
             <span class="darkmode">Dark Mode</span>
           </div>
          
-          <div v-show="showMode" @click="setTheme('light')" class="align-self-baseline">
+          <div v-show="!showMode" @click="setTheme('light')" class="align-self-baseline">
             <span class="icon1">
               <i class="fa-regular fa-sun"></i>
             </span>
