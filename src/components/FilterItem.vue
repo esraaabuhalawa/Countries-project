@@ -1,22 +1,24 @@
 <template>
   <div class="container">
     <header class="d-flex flex-wrap flex-md-nowrap align-items-center justify-content-between">
-      <div class="input-group position-relative mb-3 mb-md-0" id="target">
-        <div class="position-relative icon" @click="searchByName">
-          <span id="addon-wrapping" class="position-absolute">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </span>
-        </div>
+      <div class="input-group position-relative mb-3 mb-md-0" >
 
         <input
           type="text"
-          class="form-control"
-          placeholder="Search for a country..."
+          id="target"
+          class="form-control ps-4"
+
           v-model="searchCountry"
           aria-label="Username"
           aria-describedby="addon-wrapping"
+          @change="ChangeName($event)"
         />
+        <label for="target" >
+          <span id="addon-wrapping me-2">
+            <i class="fa-solid fa-magnifying-glass pe-2"></i> 
+          </span> Search for a country...</label>
       </div>
+
 
       <div class="custom-select" :class="{ open: isOpen }">
         <div class="select-box" @click="toggleDropdown">
@@ -29,7 +31,7 @@
           <div
             v-for="option in options"
             :key="option"
-            :style="{ backgroundColor: option === selectedOption ? '#2f4a65' : 'transparent' }"
+            :class=" option === selectedOption ? 'selected' : 'transparent' "
           >
             {{ option }}
           </div>
@@ -43,7 +45,6 @@
 </template>
 <script>
 import { ref } from 'vue'
-//import { defineEmit } from 'vue'
 
 export default {
   props: {
@@ -75,12 +76,12 @@ export default {
       }
     }
 
-    //Serach by name
-    const searchByName = () => {
-      props.onValueChange(searchCountry.value);
-    }
+    const ChangeName = (e) =>{
+   
+      props.onValueChange(e.target.value);
     
-
+    }
+    //Serach by name
     return {
       searchCountry,
       selectedOption,
@@ -88,7 +89,7 @@ export default {
       options,
       toggleDropdown,
       selectOption,
-      searchByName
+      ChangeName
     }
   }
 }
@@ -99,10 +100,9 @@ export default {
 }
 .input-group {
   width: 100%;
-  border-radius: 5px !important;
   input {
     padding: 10px;
-    border: 0;
+    border-radius: 5px !important;
   }
   .input-group-text {
     background: none;
@@ -110,17 +110,17 @@ export default {
     border: 0;
   }
 }
+label{
+  position: absolute;
+    z-index: 10;
+    top: 11px;
+    font-size: 0px;
+    left: 31px;
+}
 #target {
   border: 1px solid var(--light-elements);
 }
-.icon {
-  padding-right: 27px;
-  padding-left: 18px;
-  span {
-    z-index: 100;
-    top: 28%;
-  }
-}
+
 .icon:hover{
   cursor: pointer;
   transform: scale(1.1);
