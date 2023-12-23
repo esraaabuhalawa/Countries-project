@@ -13,16 +13,6 @@
       <country-card v-for="(country, i) in countries" :key="i" :country="country"></country-card>
     </section>
 
-    <!----<section v-if="countries.length == 0">
-      <section class="my-3">
-        <div class="alert alert-danger mt-5 py-3" role="alert">
-          Sorry, There is no Result for your search.
-        </div>
-      </section>
-     
-        <button class="back mt-3"><i class="fa-solid fa-arrow-left-long" @click="reset"></i> Back</button>
-
-    </section>-->
   </div>
 </template>
 <script>
@@ -36,16 +26,16 @@ export default {
     'country-card': CountryCard,
     'filter-item': FilterItem
   },
-  //props: ['country'],
+
   setup() {
     const getCountryName = ref('')
     const regionFilter = ref('')
     const filteredResults = ref([])
     const notFound = ref(false)
-    const searchResults = ref([])
+
 
     const countries = computed(() => {
-      //  let result = []
+
       if (getCountryName.value === '') {
         if (!regionFilter.value || regionFilter.value == 'Filter by Region') {
           filteredResults.value = data
@@ -76,14 +66,9 @@ export default {
           }
         }
         
-      } /*else if (regionFilter.value !== 'Filter by Region'){
-
-          filteredResults.value = data.filter((country) => country.region === regionFilter.value);
-       
-      }*/else{
+      }else{
         filteredResults.value = data
       }
-    //  storeFilteredResults();
       return filteredResults.value
     })
 
@@ -99,7 +84,7 @@ export default {
       console.log(regionFilter.value)
     }
 
-    //setting in local storage todos array
+    //setting in local storage  array
     watch(getCountryName, (newVal) => {
       localStorage.setItem('countryName', newVal)
     })
